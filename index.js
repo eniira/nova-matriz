@@ -326,7 +326,7 @@ app.post('/dados', function(req, res){
 });
 
 app.use('/', router);
-let port = process.env.port || 8080;
+let port = process.env.PORT || 8080;
 
 app.listen(port, (req,res)=>{
     console.log('Servidor Rodando');
