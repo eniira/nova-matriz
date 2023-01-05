@@ -71,9 +71,9 @@ let materias = [
 		"qtdEquivalente" : 1
 		
 	},{ /*Segundo Periodo*/
-		"nome": "Algoritimos e Estruturas de Dados 1",
+		"nome": "Algoritmos e Estruturas de Dados 1",
 		"cargaHoraria" : 60,
-		"equivalente" : "Algoritimos e Estruturas de Dados 1",
+		"equivalente" : "Algoritmos e Estruturas de Dados 1",
 		"qtdEquivalente" : 1
 		
 	},{
@@ -95,15 +95,15 @@ let materias = [
 		"qtdEquivalente" : 0 //se equivamente for maior que 0
 		
 	},{
-		"nome": "Propabilidade e Estatística",
+		"nome": "Probabilidade e Estatística",
 		"cargaHoraria" : 60,
-		"equivalente" : "Propabilidade e Estatística",
+		"equivalente" : "Probabilidade e Estatística",
 		"qtdEquivalente" : 1
 		
 	},{ /*Terçero Periodo*/
-		"nome": "Algoritimos e Estruturas de Dados 2",
+		"nome": "Algoritmos e Estruturas de Dados 2",
 		"cargaHoraria" : 60,
-		"equivalente" : "Algoritimos e Estruturas de Dados 2",
+		"equivalente" : "Algoritmos e Estruturas de Dados 2",
 		"qtdEquivalente" : 1
 		
 	},{
@@ -239,7 +239,7 @@ let materias = [
 		"qtdEquivalente" : 1
 		
 	},{
-		"nome": "Segurança e Auditória de Sistemas",
+		"nome": "Segurança e Auditoria de Sistemas",
 		"cargaHoraria" : 60,
 		"equivalente" : "Cibersegurança",
 		"qtdEquivalente" : 1
@@ -309,16 +309,18 @@ app.post('/dados', function(req, res){
 				console.log(valor);
 
 				//carga hóraria da nova;
-				restanteAnt = restanteAnt - (nome.qtdEquivalente);
+				restanteAnt = restanteAnt - 1;
 				restanteNova = restanteNova - (nome.qtdEquivalente);
 				console.log(restanteAnt);
 				console.log(restanteNova);
-				res.json({Carga : valor, HoraNova: restanteNova, HoraAnt: restanteAnt});
+				//res.send(`Nome da materia: ${nome.nome}`);
+				//res.json({Carga : valor, HoraNova: restanteNova, HoraAnt: restanteAnt});
 			}
 			/*else{
 				res.json({message: 'Nao'});
 			}*/
 	}
+	res.json({Carga : valor, HoraNova: restanteNova, HoraAnt: restanteAnt});
 	valor = cargaHoraAnt;
 	restanteAnt = qtdDiscAnt;
 	restanteNova = qtdDiscNov;
