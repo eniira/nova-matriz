@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	
+</head>
+
+<body>
+
+<div class="row">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Disciplina</th>
+				<th>Equivalente</th>
+			</tr>
+		</thead>
+			<tbory>
+			{{#each dados.data}}
+				<tr>
+					<td>{{disciplina}}</td>
+					<td>{{equivalente}}</td>
+				</tr>
+			{{/each}}
+			</tbory>
+	</table>
+</div>
+
+<div class="card">
+	<div>
+		{{#each dados.dat}}
+		<h3>Hora Restante antiga: {{horaAnt}}</h3>
+		<h3>Hora Restante nova: {{horaNova}}</h3>
+		<h3>Materias restante antiga : {{materiaAnt}}</h3>
+		<h3>Materias restante Nova: {{materiaNova}}</h3>
+		<h3>Optativa restante Nova: {{optativaNova}}</h3>
+		<h3>Optativa restante Antiga: {{optativaAntiga}}</h3>
+		<h3>Humana restante Nova: {{humanaNova}}</h3>
+		<h3>Humana restante Antiga: {{humanaAntiga}}</h3>
+		<h3>Horas de extensão restante se for na nova: {{extensao}}</h3>
+		{{/each}}
+	</div>
+
+</body>
+</html>
+
+<!--<button class="btn btn-success" type="submit">Baixar Resultado</button>-->
