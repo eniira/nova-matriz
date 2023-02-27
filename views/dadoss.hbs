@@ -1,47 +1,126 @@
-<!DOCTYPE html>
+<style>
+	body{
+		font-family: Arial, Helvetica, sans-serif;
+		background-image: linear-gradient(to right, rgb(20,147,220), rgb(17, 54, 71));
+	}
+	.box{
+		color: white;
+		position: relative;
+		top: 100px;
+		left: 250px;
+		background-color: rgba(0, 0, 0, 0.8);
+		padding: 15px;
+		border-radius: 15px;
+		width: 26%;
+	}
+	.box1{
+		color: white;
+		position: relative;
+		top: -233px;
+		left: 54%;
+		background-color: rgba(0, 0, 0, 0.8);
+		padding: 15px;
+		border-radius: 15px;
+		width: 27%;
+	}
+	fieldset{
+		border: 3px solid dodgerblue;
+	}
+	legend{
+		border: 1px solid dodgerblue;
+		padding: 10px;
+		text-align: center;
+		background-color: dodgerblue;
+		border-radius: 5px;
+	}	
+	.box2{
+		color: white;
+		position: relative;
+		top: -190px;
+		left: 23%;
+		background-color: rgba(0,0,0,0.8);
+		padding: 15px;
+		border-radius: 15px;
+		width: 740px;
+	}
+	table{
+		border-collapse: collapse;
+		width: 700px;
+		border-radius: 15px 15px 0 0;
+		overflow: hidden;
+	}
+	table thead tr{
+		background-color: rgba(192,192,192,0.2);
+		color: #ffffff;
+		text-align: center;
+		font-weight: bold;
+	}
+	table th,
+	table td{
+		padding: 12px 15px;
+	}
+	table tbody tr{
+		border-bottom: 1px solid #dddddd;
+	}
+	table tbody tr:nth-of-type(even){
+		background-color: rgba(192,192,192,0.2);
+	}
+	table tbody tr:last-of-type{
+		border-bottom: 2px solid background-color: rgba(192,192,192,0.2);
+	}
 
-<html lang="en">
-
-<head>
-	
-</head>
+</style>
 
 <body>
-
-<div class="row">
-	<table border="1">
-		<thead>
-			<tr>
-				<th>Disciplina</th>
-				<th>Equivalente</th>
-			</tr>
-		</thead>
-			<tbory>
-			{{#each dados.data}}
-				<tr>
-					<td>{{disciplina}}</td>
-					<td>{{equivalente}}</td>
-				</tr>
+	<div class="box">
+		<fieldset>
+			<legend><b>Grade Atual</b></legend>
+		<div>
+			{{#each dados.dat}}
+			<h3>Horas Restantes das disciplinas obrigatórias: {{horaAnt}} h</h3>
+			<h3>Matérias Restantes: {{materiaAnt}}</h3>
+			<h3>Optativas Restantes: {{optativaAntiga}}</h3>
+			<h3>Humanas Restantes: {{humanaAntiga}}</h3>
+			<h3>Horas de extensão restantes: 0 h</h3>
 			{{/each}}
-			</tbory>
-	</table>
-</div>
-
-<div class="card">
-	<div>
-		{{#each dados.dat}}
-		<h3>Hora Restante antiga: {{horaAnt}}</h3>
-		<h3>Hora Restante nova: {{horaNova}}</h3>
-		<h3>Materias restante antiga : {{materiaAnt}}</h3>
-		<h3>Materias restante Nova: {{materiaNova}}</h3>
-		<h3>Optativa restante Nova: {{optativaNova}}</h3>
-		<h3>Optativa restante Antiga: {{optativaAntiga}}</h3>
-		<h3>Humana restante Nova: {{humanaNova}}</h3>
-		<h3>Humana restante Antiga: {{humanaAntiga}}</h3>
-		<h3>Horas de extensão restante se for na nova: {{extensao}}</h3>
-		{{/each}}
+		</div>
+		</fieldset>
 	</div>
-
+	<div class="box1">
+		<fieldset>
+			<legend><b>Grade Nova</b></legend>
+		<div>
+			{{#each dados.dat}}
+			<h3>Horas restantes das disciplinas obrigatórias: {{horaNova}} h</h3>
+			<h3>Matérias restantes: {{materiaNova}}</h3>
+			<h3>Optativas restantes: {{optativaNova}}</h3>
+			<h3>Humanas restantes: {{humanaNova}}</h3>
+			<h3>Horas de extensão restantes: {{extensao}} h</h3>
+			{{/each}}
+		</div>
+		</fieldset>
+	</div>
+	<div class="box2">
+		<fieldset>
+				<legend><b>Tabela de Equivalência das Disciplinas</b></legend>
+			<table>
+					<thead>
+						<tr>
+							<th>Disciplina</th>
+							<th>Equivalente</th>
+						</tr>
+					</thead>
+						<tbory>
+						{{#each dados.data}}
+							<tr>
+								<td>{{disciplina}}</td>
+								<td>{{equivalente}}</td>
+							</tr>
+						{{/each}}
+						</tbory>
+			</table>
+		</fieldset>
+	</div>
 </body>
 </html>
 
