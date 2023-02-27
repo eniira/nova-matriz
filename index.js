@@ -440,68 +440,74 @@ var qtdHumanaNova = humanasNova;
 var horasExtensao = extensao;
 var restanteHoraNova = cargaHoraNova;
 
-app.post('/dados', function(req, res){
+app.post('/resultado', function(req, res,next){
 	dados.data = [];
 	dados.dat = [];
 	qtdOptativaAnt = qtdOptativaAnt - req.body.optativaAnti;
 	qtdHumanaAnt = qtdHumanaAnt - req.body.humanasAnti;
 	horasExtensao = horasExtensao - req.body.extensao;
-	for(const disciplina of req.body.disciplinas){
-		const nome = materias.find(materia => materia.nome === disciplina);
-			if(nome != null){
-				dados.data.push({
-					disciplina: `${nome.nome}`,
-					equivalente: `${nome.equivalente}`
-				})
-				//carga hóraria da nova;
-				valor = valor - nome.cargaHoraria;
-				restanteHoraNova =  restanteHoraNova - (nome.horaEquivalente);
-				restanteAnt = restanteAnt - 1;
-				restanteNova = restanteNova - (nome.qtdEquivalente);
-				qtdOptativaNov = qtdOptativaNov - (nome.eOptativa);
-				qtdHumanaNova = qtdHumanaNova - (nome.eHumana);
-			}
-			/*else{
-				res.json({message: 'Nao'});
-			}*/
+	if((!req.body.disciplinas) == true){
+		next('Selecione ao menos uma disciplina');
 	}
-	console.log(restanteHoraNova);
-	qtdOptativaNov = qtdOptativaNov - req.body.optativaAnti;
-	qtdHumanaNova = qtdHumanaNova - req.body.humanasAnti;
-	if(qtdOptativaNov < 0){
-		qtdOptativaNov = 0;
-	}
-	if(qtdHumanaNova < 0){
-		qtdHumanaNova = 0;
-	}
-	if(qtdOptativaAnt < 0){
-		qtdOptativaAnt = 0;
-	}
-	if(qtdHumanaAnt < 0){
-		qtdHumanaAnt = 0;
-	}
-	if(horasExtensao < 0){
-		horasExtensao = 0;
-	}
-	dados.dat.push({horaAnt: valor, materiaAnt: restanteAnt, 
-		materiaNova: restanteNova, optativaNova: qtdOptativaNov, humanaNova: qtdHumanaNova, 
-		extensao: horasExtensao, optativaAntiga: qtdOptativaAnt, humanaAntiga: qtdHumanaAnt, 
-		horaNova: restanteHoraNova});
-	/*fs.writeFile('dados.json', JSON.stringify(dados), err=>{
-		if(err) return err;
-		console.log('Gravado');
-	})*/
-	/*fs.readFile('dados.json', function(err, data){
-		if (err) return err;
-		das = JSON.parse(data);
-	});*/
-	console.log(dados.dat);
-	res.render('dadoss', {dados:dados});
-	//resetando os valores
-	valor = cargaHoraAnt;
-	restanteAnt = qtdDiscAnt;
-	restanteNova = qtdDiscNov;
+		console.log(!req.body.disciplinas);
+		console.log(req.body.disciplinas);
+		for(const disciplina of req.body.disciplinas){
+			console.log(disciplina);
+			const nome = materias.find(materia => materia.nome === disciplina);
+				if(nome != null){
+					dados.data.push({
+						disciplina: `${nome.nome}`,
+						equivalente: `${nome.equivalente}`
+					})
+					//carga hóraria da nova;
+					valor = valor - nome.cargaHoraria;
+					restanteHoraNova =  restanteHoraNova - (nome.horaEquivalente);
+					restanteAnt = restanteAnt - 1;
+					restanteNova = restanteNova - (nome.qtdEquivalente);
+					qtdOptativaNov = qtdOptativaNov - (nome.eOptativa);
+					qtdHumanaNova = qtdHumanaNova - (nome.eHumana);
+				}
+		}
+		console.log(restanteHoraNova);
+		qtdOptativaNov = qtdOptativaNov - req.body.optativaAnti;
+		qtdHumanaNova = qtdHumanaNova - req.body.humanasAnti;
+		if(qtdOptativaNov < 0){
+			qtdOptativaNov = 0;
+		}
+		if(qtdHumanaNova < 0){
+			qtdHumanaNova = 0;
+		}
+		if(qtdOptativaAnt < 0){
+			qtdOptativaAnt = 0;
+		}
+		if(qtdHumanaAnt < 0){
+			qtdHumanaAnt = 0;
+		}
+		if(horasExtensao < 0){
+			horasExtensao = 0;
+		}
+		dados.dat.push({horaAnt: valor, materiaAnt: restanteAnt, 
+			materiaNova: restanteNova, optativaNova: qtdOptativaNov, humanaNova: qtdHumanaNova, 
+			extensao: horasExtensao, optativaAntiga: qtdOptativaAnt, humanaAntiga: qtdHumanaAnt, 
+			horaNova: restanteHoraNova});
+		console.log(dados.dat);
+		res.render('dadoss', {dados:dados});
 
+	    /*resetando os valores*/
+		valor = cargaHoraAnt;
+		restanteAnt = qtdDiscAnt;
+		restanteNova = qtdDiscNov;
+		qtdOptativaAnt = optativaAnt;
+		qtdOptativaNov = optativaNova;
+		qtdHumanaAnt = humanasAnt;
+		qtdHumanaNova = humanasNova; 
+		horasExtensao = extensao;
+		restanteHoraNova = cargaHoraNova;
+});
+
+app.get('/resultado', function(req, res, netx){
+	res.render('erro');
+	res.end();
 });
 
 app.use('/', router);
