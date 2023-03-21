@@ -29,7 +29,7 @@ var cargaHoraNova = 1735; //
 var optativaAnt = 6; //decrementa ta optativa escrita, se menor que 0 nenhuma restante
 var optativaNova = 10; //decrementa de eOptativa
 var humanasAnt = 3; //decrementa da optativa escrecrita, se menor que 0 nunhuem restante
-var humanasNova = 8; // decrementa de eHumana
+var humanasNova = 1; // decrementa de eHumana
 var extensao = 330;
 
 let materias = [
@@ -244,7 +244,7 @@ let materias = [
 	},{
 		"nome": "Programação de Aplicativos",
 		"cargaHoraria" : 60,
-		"equivalente" : "Optativa: Desenvolviemnto de Jogos",
+		"equivalente" : "Optativa: Desenvolvimento de Jogos",
 		"qtdEquivalente" : 0,
 		"eOptativa": 1,
 		"eHumana": 0,
@@ -468,7 +468,7 @@ app.post('/resultado', function(req, res,next){
 					qtdHumanaNova = qtdHumanaNova - (nome.eHumana);
 				}
 		}
-		console.log(restanteHoraNova);
+		//console.log(restanteHoraNova);
 		qtdOptativaNov = qtdOptativaNov - req.body.optativaAnti;
 		qtdHumanaNova = qtdHumanaNova - req.body.humanasAnti;
 		if(qtdOptativaNov < 0){
@@ -490,7 +490,7 @@ app.post('/resultado', function(req, res,next){
 			materiaNova: restanteNova, optativaNova: qtdOptativaNov, humanaNova: qtdHumanaNova, 
 			extensao: horasExtensao, optativaAntiga: qtdOptativaAnt, humanaAntiga: qtdHumanaAnt, 
 			horaNova: restanteHoraNova});
-		console.log(dados.dat);
+		//console.log(dados.dat);
 		res.render('dadoss', {dados:dados});
 
 	    /*resetando os valores*/
