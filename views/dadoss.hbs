@@ -2,12 +2,13 @@
 	body{
 		font-family: Arial, Helvetica, sans-serif;
 		background-image: linear-gradient(to right, rgb(20,147,220), rgb(17, 54, 71));
+		height: 100%;
 	}
 	.box{
 		color: white;
 		position: relative;
-		top: 100px;
-		left: 250px;
+		top: 5vh;
+		left: 20%;
 		background-color: rgba(0, 0, 0, 0.8);
 		padding: 15px;
 		border-radius: 15px;
@@ -16,7 +17,7 @@
 	.box1{
 		color: white;
 		position: relative;
-		top: -233px;
+		top: -52vh;
 		left: 54%;
 		background-color: rgba(0, 0, 0, 0.8);
 		padding: 15px;
@@ -36,16 +37,16 @@
 	.box2{
 		color: white;
 		position: relative;
-		top: -190px;
-		left: 23%;
+		top: -45vh;
+		left: 21%;
 		background-color: rgba(0,0,0,0.8);
 		padding: 15px;
 		border-radius: 15px;
-		width: 740px;
+		width: 60%;
 	}
 	table{
 		border-collapse: collapse;
-		width: 700px;
+		width: 100%;
 		border-radius: 15px 15px 0 0;
 		overflow: hidden;
 	}
@@ -67,6 +68,16 @@
 	}
 	table tbody tr:last-of-type{
 		border-bottom: 2px solid background-color: rgba(192,192,192,0.2);
+	}
+	.form{
+		color: white;
+		position: relative;
+		top: -40vh;
+		left: 23%;
+		background-color: rgba(0,0,0,0.8);
+		padding: 15px;
+		border-radius: 15px;
+		width: 55%;
 	}
 
 </style>
@@ -119,6 +130,12 @@
 						{{/each}}
 						</tbory>
 			</table>
+		</fieldset>
+	</div>
+	<div class="form">
+		<fieldset>
+			<h3>Por favor, responda o formulário clicando no link abaixo, é rapidinho!</h3>
+			<h3>Link: </h3>
 		</fieldset>
 	</div>
 </body>
