@@ -5,17 +5,19 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 const fs = require('fs');
+const puppeteer = require('puppeteer');
 const dados = require('./dados.json');
 const exphbs = require('express-handlebars');
 app.engine('hbs', exphbs.engine({ extname: '.hbs'}));
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+const pdf = require('html-pdf');
 
 var qtdDiscAnt = 43; //decrementa 1, sempre
 var qtdDiscNov = 33; //decrementa de qtdEquivamente ??colocar ttc 1/2??
 var cargaHoraAnt = 2625; //decrementa da carga horaria 
-var cargaHoraNova = 1735; //
+var cargaHoraNova = 1875; //1735
 var optativaAnt = 6; //decrementa ta optativa escrita, se menor que 0 nenhuma restante
 var optativaNova = 10; //decrementa de eOptativa
 var humanasAnt = 3; //decrementa da optativa escrecrita, se menor que 0 nunhuem restante
@@ -710,27 +712,43 @@ app.post('/resultado', function(req, res,next){
 					}
 					if(nome.periodoEquivalente == 1){
 						periodo1 = periodo1 - nome.horaEquivalente;
+						//console.log("periodo 1");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 2){
 						periodo2 = periodo2 - nome.horaEquivalente;
+						//console.log("periodo 2");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 3){
 						periodo3 = periodo3 - nome.horaEquivalente;
+						//console.log("periodo 3");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 4){
 						periodo4 = periodo4 - nome.horaEquivalente;
+						//console.log("periodo 4");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 5){
 						periodo5 = periodo5 - nome.horaEquivalente;
+						//console.log("periodo 5");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 6){
 						periodo6 = periodo6 - nome.horaEquivalente;
+						//console.log("periodo 6");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 7){
 						periodo7 = periodo7 - nome.horaEquivalente;
+						//console.log("periodo 7");
+						//console.log(nome.nome);
 					}
 					if(nome.periodoEquivalente == 8){
 						periodo8 = periodo8 - nome.horaEquivalente;
+						//console.log("periodo 8");
+						//console.log(nome.nome);
 					}
 				}
 		}
@@ -746,15 +764,15 @@ app.post('/resultado', function(req, res,next){
 					qtdOptativaAnt = qtdOptativaAnt - (nome.equivalencia);
 					if(nome.equivalencia == 1){
 						if(vagas3 > 0 && periodo6 > 0){
-							console.log("entrou");
+							//console.log("entrou");
 							periodo6 = periodo6 - 60;
 							vagas3--;
 						}else if(vagas5 > 0 && periodo7 > 0){
-							console.log("entrou3");
+							//console.log("entrou3");
 							periodo7 = periodo7 - 60;
 							vagas5--;
 						}else if(vagas2 > 0 && periodo8 > 0){
-							console.log("entrou6");
+							//console.log("entrou6");
 							periodo8 = periodo8 - 60;
 							vagas2--;
 						}
@@ -764,6 +782,15 @@ app.post('/resultado', function(req, res,next){
 		}
 
 
+		/*console.log(periodo1);
+		console.log(periodo2);
+		console.log(periodo3);
+		console.log(periodo4);
+		console.log(periodo5);
+		console.log(periodo6);
+		console.log(periodo7);
+		console.log(periodo8);*/
+
 		if(req.body.humanasAnti >= 1){
 			periodo2 = periodo2 - 30;
 		}
@@ -771,42 +798,50 @@ app.post('/resultado', function(req, res,next){
 		periodoTotal = periodo1;
 		if(periodoTotal >= 288.28){
 			periodoNova = 1;
-			
+			//console.log("periodo 1");
+			//console.log(periodo1);
 		}else{
 			periodoTotal = periodoTotal + periodo2;
 			if(periodoTotal >= 288.28){
 				periodoNova = 2;
-				
+				//console.log("periodo 2");
+				//console.log(periodo2);
 			}else{
 				periodoTotal = periodoTotal + periodo3;
 				if(periodoTotal >= 288.28){
 					periodoNova = 3;
-					
+					//console.log("periodo 3");
+					//console.log(periodo3);
 				}else {
 					periodoTotal = periodoTotal + periodo4;
 					if(periodoTotal >= 288.28){
 						periodoNova = 4;
-						
+						//console.log("periodo 4");
+						//console.log(periodo4);
 					}else {
 						periodoTotal = periodoTotal + periodo5;
 						if(periodoTotal >= 288.28){
 							periodoNova = 5;
-							
+							//console.log("periodo 5");
+							//console.log(periodo5);
 						}else {
 							periodoTotal = periodoTotal + periodo6;
 							if(periodoTotal >= 288.28){
 								periodoNova = 6;
-								
+								//console.log("periodo 6");
+								//console.log(periodo6);
 							}else {
 								periodoTotal = periodoTotal + periodo7;
 								if(periodoTotal >= 288.28){
 									periodoNova = 7;
-									
+									//console.log("periodo 7");
+									//console.log(periodo7);
 								}else {
 									periodoTotal = periodoTotal + periodo8;
-									if(periodoTotal >= 288.28){
+									if(periodoTotal >= 288.28 || periodoTotal < 288.28){
 										periodoNova = 8;
-										
+										//console.log("periodo 8");
+										//console.log(periodo8);
 									}
 								}
 							}
