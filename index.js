@@ -5,14 +5,12 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 const fs = require('fs');
-const puppeteer = require('puppeteer');
 const dados = require('./dados.json');
 const exphbs = require('express-handlebars');
 app.engine('hbs', exphbs.engine({ extname: '.hbs'}));
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-const pdf = require('html-pdf');
 
 var qtdDiscAnt = 43; //decrementa 1, sempre
 var qtdDiscNov = 33; //decrementa de qtdEquivamente ??colocar ttc 1/2??
