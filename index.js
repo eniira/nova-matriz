@@ -771,50 +771,42 @@ app.post('/resultado', function(req, res,next){
 		periodoTotal = periodo1;
 		if(periodoTotal >= 288.28){
 			periodoNova = 1;
-			console.log("periodo 1");
-			console.log(periodo1);
+			
 		}else{
 			periodoTotal = periodoTotal + periodo2;
 			if(periodoTotal >= 288.28){
 				periodoNova = 2;
-				console.log("periodo 2");
-				console.log(periodo2);
+				
 			}else{
 				periodoTotal = periodoTotal + periodo3;
 				if(periodoTotal >= 288.28){
 					periodoNova = 3;
-					console.log("periodo 3");
-					console.log(periodo3);
+					
 				}else {
 					periodoTotal = periodoTotal + periodo4;
 					if(periodoTotal >= 288.28){
 						periodoNova = 4;
-						console.log("periodo 4");
-						console.log(periodo4);
+						
 					}else {
 						periodoTotal = periodoTotal + periodo5;
 						if(periodoTotal >= 288.28){
 							periodoNova = 5;
-							console.log("periodo 5");
-							console.log(periodo5);
+							
 						}else {
 							periodoTotal = periodoTotal + periodo6;
 							if(periodoTotal >= 288.28){
 								periodoNova = 6;
-								console.log("periodo 6");
-								console.log(periodo6);
+								
 							}else {
 								periodoTotal = periodoTotal + periodo7;
 								if(periodoTotal >= 288.28){
 									periodoNova = 7;
-									console.log("periodo 7");
-									console.log(periodo7);
+									
 								}else {
 									periodoTotal = periodoTotal + periodo8;
 									if(periodoTotal >= 288.28){
 										periodoNova = 8;
-										console.log("periodo 8");
-										console.log(periodo8);
+										
 									}
 								}
 							}
